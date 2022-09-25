@@ -1,5 +1,4 @@
 ## Construire
-FROM node:12
 FROM beevelop/ionic:latest AS ionic
 ## Créer le répertoire de l'application
 WORKDIR /usr/src/app

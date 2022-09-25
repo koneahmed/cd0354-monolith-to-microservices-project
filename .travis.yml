@@ -23,14 +23,14 @@ script:
 # Construire
   - docker build -t udagram-api-feed ./udagram-api-feed
   - docker build -t udagram-api-user ./udagram-api-user
-  - docker build -t udagram-frontend ./udagram-frontend
+  # - docker build -t udagram-frontend ./udagram-frontend
   - docker build -t udagram-reverseproxy ./udagram-reverseproxy
 # Faites de même pour les trois autres images
 
 # Marquage
   - docker tag udagram-api-feed koneahmed/udagram-api-feed:v1
   - docker tag udagram-api-user koneahmed/udagram-api-user:v1
-  - docker tag udagram-frontend koneahmed/udagram-frontend:v1
+  # - docker tag udagram-frontend koneahmed/udagram-frontend:v1
   - docker tag udagram-reverseproxy koneahmed/udagram-reverseproxy:v1
 
 # Tâches à effectuer après la réussite du processus. Le formatage du nom d'utilisateur et du mot de passe Docker comme indiqué ci-dessous vous permet de vous connecter par programmation sans que le mot de passe soit exposé dans les journaux.
@@ -46,6 +46,6 @@ after_success:
   - echo "$DOCKER_PASSWORD". | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push koneahmed/udagram-api-feed:v1
   - docker push koneahmed/udagram-api-user:v1
-  - docker push koneahmed/udagram-frontend:v1
+  # - docker push koneahmed/udagram-frontend:v1
   - docker push koneahmed/udagram-reverseproxy:v1
 # Faites de même pour les trois autres images
