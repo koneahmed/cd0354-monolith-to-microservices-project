@@ -6,6 +6,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 # RUN npm ci
 RUN npm i -f
+# RUN npm -i -d -f @types/node
 # Regroupement des sources de l'application
 COPY . .
 EXPOSE 8080
