@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 # Un joker est utilisé pour s'assurer que le paquet.json ET le paquet-lock.json sont copiés lorsqu'ils sont disponibles (npm@5+)
 COPY package*.json ./
 # RUN npm ci
-RUN npm i
+RUN npm i -f
 # Regroupement des sources de l'application
 COPY . .
 EXPOSE 8080
