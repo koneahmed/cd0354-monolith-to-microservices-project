@@ -6,6 +6,8 @@ WORKDIR /usr/src/app
 # Un joker est utilisé pour s'assurer que package.json ET package-lock.json sont copiés.
 COPY package*.json ./
 RUN npm install -f
+RUN npm i -D -E @angular/cli
+RUN npm i -D typescript@3.4.5
 
 # RUN npm ci
 # Regroupement des sources de l'application
