@@ -6,6 +6,9 @@ WORKDIR /usr/src/app
 # Un joker est utilisé pour s'assurer que package.json ET package-lock.json sont copiés.
 COPY package*.json ./
 RUN npm i
+RUN npm install --rebuild
+RUN npm install node-sass --rebuild
+RUN npm install @ionic/app-scripts@latest --save
 # RUN npm ci
 # Regroupement des sources de l'application
 COPY . .
