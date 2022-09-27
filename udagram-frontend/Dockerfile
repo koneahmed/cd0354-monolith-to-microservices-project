@@ -1,15 +1,16 @@
-## Construire
+## Build
 FROM beevelop/ionic:latest AS ionic
-## Créer le répertoire de l'application
+# Create app directory
 WORKDIR /usr/src/app
-# Installer les dépendances de l'application
-# Un joker est utilisé pour s'assurer que package.json ET package-lock.json sont copiés.
+# RUN rm -rf node_nodules
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
 RUN npm ci
-# Regroupement des sources de l'application
+# Bundle app source
 COPY . .
 RUN ionic build
-## Exécuter
+## Run 
 FROM nginx:alpine
 #COPY www /usr/share/nginx/html
-COPY --from=ionic /usr/src/app/www /usr/share/nginx/html
+COPY --from=ionic  /usr/src/app/www /usr/share/nginx/html
