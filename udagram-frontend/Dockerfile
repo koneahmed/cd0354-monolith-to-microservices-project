@@ -1,27 +1,16 @@
-## Construire
+## Build
 FROM beevelop/ionic:latest AS ionic
-## Créer le répertoire de l'application
+# Create app directory
 WORKDIR /usr/src/app
-# Installer les dépendances de l'application
-# Un joker est utilisé pour s'assurer que package.json ET package-lock.json sont copiés.
+# RUN rm -rf node_nodules
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
-RUN npm ci -f
-RUN npm i -D typescript@3.4.5
-# RUN npm install -f
-# RUN npm i -D -E @angular/cli
-
-# RUN npm uninstall @angular-devkit/build-angular
-# RUN npm install --save-dev @angular-devkit/build-angular
-# RUN npm install @angular/core
-# RUN rm -r node_modules
-# RUN npm cache clean -f
-# RUN npm cache clean --force
-# RUN npm install
-# RUN npm ci
-# Regroupement des sources de l'application
+RUN npm ci
+# Bundle app source
 COPY . .
 RUN ionic build
-## Exécuter
+## Run 
 FROM nginx:alpine
 #COPY www /usr/share/nginx/html
-COPY --from=ionic /usr/src/app/www /usr/share/nginx/html
+COPY --from=ionic  /usr/src/app/www /usr/share/nginx/html
