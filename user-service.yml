@@ -4,7 +4,7 @@ metadata:
   name: backend-user
 spec:
   selector:
-    app: user
+    app: backend-user
   ports:
     - protocol: TCP
       port: 8080

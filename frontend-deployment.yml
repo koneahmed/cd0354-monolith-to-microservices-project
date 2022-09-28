@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: feed
-          image: koneahmed/udagram-frontend:v1
+          image: koneahmed/udagram-frontend:v2
           ports:
             - containerPort: 80
 
