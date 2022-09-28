@@ -1,11 +1,13 @@
 ## Build
 FROM beevelop/ionic:latest AS ionic
 # Create app directory
+RUN rm -rf /usr/src/app
 WORKDIR /usr/src/app
-# RUN rm -rf node_nodules
+RUN rm -rf node_nodules
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
+RUN npm cache clean --force
 RUN npm install -f
 # RUN npm ci
 # Bundle app source
