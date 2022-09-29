@@ -17,3 +17,8 @@ kubectl apply -f user-deployment.yml
 kubectl apply -f feed-deployment.yml
 kubectl apply -f reverseproxy-deployment.yml
 kubectl apply -f frontend-deployment.yml
+
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+kubectl get deployment metrics-server -n kube-system
+
